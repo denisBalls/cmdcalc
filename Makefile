@@ -1,21 +1,17 @@
-RES=cmdcalc
+RES = cmdcalc
+OBJF = main.o calc.o
 
-.PHONY: all clean run
-
-all: $(RES)
-
-$(RES): main.c calc.c calc.h
-	gcc -Wall -o $(RES) main.o calc.o
+$(RES): $(OBJF)
+	gcc -Wall $(OBJF) -o $(RES)
 
 main.o: main.c calc.h
 	gcc -Wall -c main.c
 
 calc.o: calc.c calc.h
-	gcc -Wall -c main.c
-
-clean:	
-	rm -f $(RES) $(RES).exe
+	gcc -Wall -c calc.c
 
 run: $(RES)
-	./$(RES)
+	rm -f *.o
 
+clean: $(RES)
+	rm -f $(RES) *.o

@@ -69,8 +69,14 @@ int main(int argc, char* argv[]){
 	}
 	
 	print_string(results, trio_args); //Вывод ответов
-
-	int key = atoi(argv[k_pos + 1]); //Ключ
+	
+	char *endptr;
+	long check_key = strtol(argv[k_pos + 1], &endptr, 10); //Ключ
+	
+	if (*endptr != '\0' || endptr == argv[k_pos + 1]){ //Проверка на целочисленность ключа
+		err("Ключ должен быть целым число");
+	}
+	int key = (int) check_key; //Значение ключа
 
 	char* result_str = build_answer(results, trio_args, key); //Результирующая строка
 	

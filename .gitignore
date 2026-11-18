@@ -1,0 +1,26 @@
+#Объективные файлы
+*.o
+*.obj
+
+#Исполняемые файлы
+cmdcalc
+cmdcalc.exe
+*.exe
+*.out
+
+#Файлы ред. кода
+*~
+*.swp
+
+#Локал IDe и пр редакторы
+.vscode/
+.idea/
+
+#VS
+*.pdb
+x64/
+Debug/
+Release/
+
+#macOS
+.DS_Store
