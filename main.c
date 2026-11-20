@@ -3,12 +3,12 @@
 #include <string.h>
 #include "calc.h"
 
-static int check_operator(char* s){ //Проверка оператора
-	if (s == NULL || s[0] == '\0' || s[1] != '\0'){
+static int check_operator(char* operator){ //Проверка оператора
+	if (operator == NULL || operator[0] == '\0' || operator[1] != '\0'){
 		return 0;
 	}
-	char op = s[0];
-	return (op == '+' || op == '-' || op == '*' || op == '%');
+	char char_operator = operator[0];
+	return (char_operator == '+' || char_operator == '-' || char_operator == '*' || char_operator == '%');
 }
 
 static void err(char* massage){ //Вывод ошибки
@@ -57,15 +57,15 @@ int main(int argc, char* argv[]){
 		}
 	}
 
-	int* results = (int*)malloc(trio_args * sizeof(int)); //Выделение памяти под результаты
+	long long* results = (long long*)malloc(trio_args * sizeof(int)); //Выделение памяти под результаты
 
 	for (int i = 0; i < trio_args; i++){ //Вычисление выражений
 		int pos = i * 3 + 1;
-		int a = atoi(argv[pos]);
-		char op = argv[pos+1][0];
-		int b = atoi(argv[pos+2]);
+		long long left_argument = atoi(argv[pos]);
+		char operator = argv[pos+1][0];
+		long long right_argument = atoi(argv[pos+2]);
 
-		results[i]=calculate(a, op, b);
+		results[i]=calculate(left_argument, operator, right_argument);
 	}
 	
 	print_string(results, trio_args); //Вывод ответов
